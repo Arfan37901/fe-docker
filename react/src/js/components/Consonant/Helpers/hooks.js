@@ -152,7 +152,7 @@ export const useURLState = () => {
     }, []);
 
     useEffect(() => {
-        const searchString = qs.stringify(urlState, { array: 'comma' });
+        const searchString = qs.stringify(urlState);
         const urlString = `${pathname}${searchString ? '?' : ''}${searchString}`;
 
         window.history.replaceState(null, '', urlString);
