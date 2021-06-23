@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
     func,
@@ -62,8 +63,10 @@ const CardsGrid = (props) => {
     const cardsGridLayout = getConfig('collection', 'layout.type');
     const cardsGridGutter = getConfig('collection', 'layout.gutter');
     const dateFormat = getConfig('collection', 'i18n.prettyDateIntervalFormat');
+    const customCardTemplate = getConfig('collection', 'customCard');
     const locale = getConfig('language', '');
     const paginationType = getConfig('pagination', 'type');
+
 
     /**
      * Class name for the cards grid:
@@ -113,6 +116,12 @@ const CardsGrid = (props) => {
         cardsToshow = cards.slice(0, resultsPerPage * pages);
     }
 
+    function createMarkup(card) {
+        const custumHtml = customCardTemplate(card);
+        return { __html: custumHtml };
+    }
+
+
     return cardsToshow.length > 0 && (
         <div
             data-testid="consonant-CardsGrid"
@@ -134,6 +143,10 @@ const CardsGrid = (props) => {
                             lh={`Card ${index} | ${card.contentArea.title}`}
                             key={card.id}
                             {...card} />
+                    );
+                } else if (cardStyle === CARD_STYLES.CUSTOM) {
+                    return (
+                        <div dangerouslySetInnerHTML={createMarkup(card)} />
                     );
                 }
                 return (

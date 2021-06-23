@@ -1,3 +1,4 @@
+
 /**
  * Minimal viewport width to fit desktops/laptops
  * @type {Number}
@@ -198,6 +199,7 @@ export const CARD_STYLES = {
     WIDE: '1:2',
     SQUARE: '3:4',
     FULL: 'full-card',
+    CUSTOM: 'custom-card',
 };
 
 /**
@@ -215,3 +217,4 @@ export const LOADER_SIZE = {
  * @type {String}
  */
 export const ROOT_MARGIN_DEFAULT = '500px';
+
