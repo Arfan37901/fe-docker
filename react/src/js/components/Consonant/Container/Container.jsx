@@ -3,6 +3,7 @@ import React, {
     useEffect,
     useState,
 } from 'react';
+import classNames from 'classnames';
 import 'whatwg-fetch';
 import { shape } from 'prop-types';
 
@@ -35,6 +36,8 @@ import {
     TABLET_MIN_WIDTH,
     TRUNCATE_TEXT_QTY,
     SORT_POPUP_LOCATION,
+    THEME_TYPE,
+    LAYOUT_CONTAINER,
 } from '../Helpers/constants';
 import {
     ConfigContext,
@@ -113,6 +116,8 @@ const Container = (props) => {
     const apiFailureDescription = getConfig('collection', 'i18n.onErrorDescription');
     const trackImpressions = getConfig('analytics', 'trackImpressions');
     const collectionIdentifier = getConfig('analytics', 'collectionIdentifier');
+    const authoredMode = getConfig('collection', 'mode');
+    const authoredLayoutContainer = getConfig('collection', 'layout.container');
 
     /**
      **** Constants ****
@@ -723,6 +728,34 @@ const Container = (props) => {
      */
     const isLeftFilterPanel = filterPanelType === FILTER_PANEL.LEFT;
 
+    /**
+     **** Class names ****
+     */
+
+    /**
+     * Class name for the authored theme:
+     * light, dark, darkest;
+     * @type {String}
+     */
+    const themeClass = classNames({
+        'consonant-u-themeLight': authoredMode === THEME_TYPE.LIGHT,
+        'consonant-u-themeDark': authoredMode === THEME_TYPE.DARK,
+        'consonant-u-themeDarkest': authoredMode === THEME_TYPE.DARKEST,
+    });
+
+    /**
+     * Class name for the consonant wrapper:
+     * whether consonant wrapper contains left filter;
+     * @type {String}
+     */
+    const wrapperClass = classNames({
+        'consonant-Wrapper': true,
+        'consonant-Wrapper--32MarginContainer': authoredLayoutContainer === LAYOUT_CONTAINER.SIZE_100_VW_32_MARGIN,
+        'consonant-Wrapper--83PercentContainier': authoredLayoutContainer === LAYOUT_CONTAINER.SIZE_83_VW,
+        'consonant-Wrapper--1200MaxWidth': authoredLayoutContainer === LAYOUT_CONTAINER.SIZE_1200_PX,
+        'consonant-Wrapper--withLeftFilter': filterPanelEnabled && isLeftFilterPanel,
+    });
+
     return (
         <ConfigContext.Provider value={config}>
             <ExpandableContext.Provider value={{ value: openDropdown, setValue: setOpenDropdown }} >
@@ -733,7 +766,7 @@ const Container = (props) => {
                     daa-lh={collectionIdentifier}
                     daa-im={String(trackImpressions)}
                     onClick={handleWindowClick}
-                    className="consonant-Wrapper">
+                    className={`${wrapperClass} ${themeClass}`}>
                     <div className="consonant-Wrapper-inner">
                         {displayLeftFilterPanel && (
                             <div className="consonant-Wrapper-leftFilterWrapper">

@@ -34,8 +34,9 @@
                     rgba(0, 0, 0, 0.501) 36%,
                     rgba(0, 0, 0, 0.701) 100%
                 ) 0% 0% no-repeat padding-box;
+            outline: 0;
 
-            &:after {
+            &:before {
                 content: '';
                 position: absolute;
                 right: 24px;
@@ -83,7 +84,8 @@
             transition-delay: @consonantTransitionTime * 2;
 
             &:hover,
-            &:active {
+            &:active,
+            &:focus {
                 opacity: 1;
                 transform: scale(1.1);
                 transition: transform @consonantTransitionTime @consonantTransitionFunc;
@@ -209,12 +211,9 @@
 
         @media @consonant-desktop-up {
             &-inner {
-                border: 2px solid transparent;
                 outline: 0;
 
-                &:focus {
-                    border-color: @consonantBlue600;
-                }
+                .focus-pseudo-element;
             }
         }
     }

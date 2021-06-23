@@ -19,10 +19,6 @@
         overflow: hidden;
 
         &-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             height: @consonant-DoubleWideCard-imgHeight;
             background-position: 50% 0;
             background-size: cover;
@@ -30,11 +26,13 @@
         }
 
         &-inner {
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            padding: 16px 24px 30px;
+            padding: 16px 24px 28px;
             text-decoration: none;
             background-color: @consonantBaseColor;
+            outline: 0;
         }
 
         &-title {
@@ -75,16 +73,27 @@
         }
 
         &--contentTop &-img {
-            height: auto;
-            bottom: 0;
+            flex-grow: 1;
         }
 
         &--contentTop &-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding-top: 24px;
             background-color: transparent;
+            z-index: 1;
         }
 
         @media @consonant-desktop-up {
             min-width: @consonant-DoubleWideCard-desktopMinWidth;
+
+            &-inner {
+                outline: 0;
+
+                .focus-pseudo-element;
+            }
         }
     }
 }

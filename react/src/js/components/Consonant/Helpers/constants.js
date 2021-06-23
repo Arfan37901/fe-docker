@@ -101,14 +101,26 @@ export const INFOBIT_TYPE = {
 };
 
 /**
+ * Available themes class names
+ * @type {Object}
+ */
+export const THEME_TYPE = {
+    LIGHT: 'light',
+    DARK: 'dark',
+    DARKEST: 'darkest',
+};
+
+/**
  * Default authoring constants
  * @type {Object}
  */
 export const DEFAULT_CONFIG = {
     collection: {
+        mode: '',
         layout: {
             type: '3up',
             gutter: '4x',
+            container: '32Margin',
         },
         resultsPerPage: 9,
         endpoint: '',
@@ -199,7 +211,41 @@ export const CARD_STYLES = {
     WIDE: '1:2',
     SQUARE: '3:4',
     FULL: 'full-card',
+    HALF_HEIGHT: 'half-height',
+    DOUBLE_WIDE: 'double-wide',
     CUSTOM: 'custom-card',
+};
+
+/**
+ * Available grid types
+ * @type {Object}
+ */
+export const GRID_TYPE = {
+    TWO_UP: '2up',
+    THREE_UP: '3up',
+    FOUR_UP: '4up',
+    FIVE_UP: '5up',
+};
+
+/**
+ * Available gutter sizes
+ * @type {Object}
+ */
+export const GUTTER_SIZE = {
+    GUTTER_1_X: '1x',
+    GUTTER_2_X: '2x',
+    GUTTER_3_X: '3x',
+    GUTTER_4_X: '4x',
+};
+
+/**
+ * Available layout container types
+ * @type {Object}
+ */
+export const LAYOUT_CONTAINER = {
+    SIZE_83_VW: '83Percent',
+    SIZE_1200_PX: '1200MaxWidth',
+    SIZE_100_VW_32_MARGIN: '32Margin',
 };
 
 /**

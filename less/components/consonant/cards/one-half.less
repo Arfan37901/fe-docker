@@ -15,9 +15,11 @@
         border-radius: 4px;
         background-color: @consonantBaseColor;
 
+        .card-hover;
+        .card-hover-img;
+
         &-inner {
             display: flex;
-            flex-grow: 1;
             flex-direction: column;
             padding: 16px;
             border-bottom-left-radius: 4px;
@@ -26,6 +28,7 @@
         }
 
         &-img {
+            flex-grow: 1;
             position: relative;
             width: 100%;
             min-height: @consonant-OneHalfCard-imgHeigh;
@@ -55,7 +58,8 @@
             transition-delay: @consonantTransitionTime * 2;
 
             &:hover,
-            &:active {
+            &:active,
+            &:focus {
                 opacity: 1;
                 transform: scale(1.1);
                 transition: transform @consonantTransitionTime @consonantTransitionFunc;

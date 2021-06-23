@@ -16,6 +16,9 @@
         background-color: @consonantBaseColor;
         overflow: hidden;
 
+        .card-hover;
+        .card-hover-img;
+
         &-inner {
             display: flex;
             flex-grow: 1;
@@ -23,6 +26,11 @@
             padding: 16px 16px 24px;
             text-decoration: none;
             background-color: @consonantBaseColor;
+            outline: 0;
+
+            & > :last-child {
+                margin-bottom: 0;
+            }
         }
 
         &-img {
@@ -53,7 +61,8 @@
             transition-delay: @consonantTransitionTime * 2;
 
             &:hover,
-            &:active {
+            &:active,
+            &:focus {
                 opacity: 1;
                 transform: scale(1.1);
                 transition: transform @consonantTransitionTime @consonantTransitionFunc;
@@ -156,6 +165,12 @@
             .line-clamp(5);
         }
 
+        &-label + &-title + &-text {
+            max-height: 1rem;
+
+            .line-clamp(1);
+        }
+
         &-banner {
             position: absolute;
             display: flex;
@@ -213,13 +228,9 @@
 
         @media @consonant-desktop-up {
             &-inner {
-                padding-bottom: 6px;
-                border: 2px solid transparent;
                 outline: 0;
 
-                &:focus {
-                    border-color: @consonantBlue600;
-                }
+                .focus-pseudo-element;
             }
         }
     }

@@ -24,7 +24,7 @@
 
 /* Blue */
 
-@consonantLightBlue40000: #378ef0;
+@consonantBlue400: #378ef0;
 @consonantBlue500: #2680eb;
 @consonantBlue600: #1473e6;
 @consonantBlue700: #0d66d0;
@@ -70,7 +70,7 @@
 
     /* Blue */
 
-    @consonantLightBlue40000: #2680eb;
+    @consonantBlue400: #2680eb;
     @consonantBlue500: #1473e6;
     @consonantBlue600: #0d66d0;
     @consonantBlue700: #095aba;
@@ -118,7 +118,7 @@
 
     /* Blue */
 
-    @consonantLightBlue40000: #2680eb;
+    @consonantBlue400: #2680eb;
     @consonantBlue500: #378ef0;
     @consonantBlue600: #4b9cf5;
     @consonantBlue700: #5aa9fa;
@@ -166,7 +166,7 @@
 
     /* Blue */
 
-    @consonantLightBlue40000: #1473e6;
+    @consonantBlue400: #1473e6;
     @consonantBlue500: #2680eb;
     @consonantBlue600: #378ef0;
     @consonantBlue700: #4b9cf5;
@@ -212,7 +212,7 @@
                     background-color: @consonantBaseColor;
 
                     @media @consonant-desktop-up {
-                        &:focus {
+                        &:focus:after {
                             border-color: @consonantBlue600;
                         }
                     }
@@ -283,10 +283,16 @@
             /* consonant-DoubleWideCard */
 
             &-DoubleWideCard {
-                border-color: @consonantGray300;
+                border-color: @consonantGray500;
 
-                &-footer {
+                &-inner {
                     background-color: @consonantBaseColor;
+
+                    @media @consonant-desktop-up {
+                        &:focus:after {
+                            border-color: @consonantBlue600;
+                        }
+                    }
                 }
 
                 &-title {
@@ -305,17 +311,17 @@
             /* consonant-FullCard */
 
             &-FullCard {
-                border-color: @consonantGray300;
+                border-color: @consonantGray500;
                 background-color: @consonantBaseColor;
 
                 &-inner {
                     @media @consonant-desktop-up {
-                        &:focus {
+                        &:focus:after {
                             border-color: @consonantBlue600;
                         }
                     }
 
-                    &:after {
+                    &:before {
                         border-color: @consonantBaseColor;
                         box-shadow: 1px 1px 0 0 @consonantBaseColor;
                     }
@@ -360,6 +366,12 @@
                     color: @consonantBaseColor;
                     background-color: @consonantBlue600;
                 }
+
+                @media @consonant-desktop-up {
+                    &:focus:after {
+                        border-color: @consonantBlue600;
+                    }
+                }
             }
 
             /* consonant-CardFooter */
@@ -370,12 +382,206 @@
                 }
             }
         }
+
+        /* consonant-BookmarkInfobit */
+
+        .consonant-BookmarkInfobit {
+            @url: extract(@consonant-BookmarkInfobit-bookmarks, @index + 1);
+            @urlFilled: extract(@consonant-BookmarkInfobit-filled-bookmarks, @index + 1);
+
+            &.is-active .consonant-BookmarkInfobit-ico {
+                background-image: url(@urlFilled);
+            }
+
+            &-ico {
+                background-image: url(@url);
+            }
+
+            @media @consonant-desktop-up {
+                &:focus {
+                    outline-color: @consonantBlue600;
+                }
+            }
+        }
+
+        /* consonant-Tooltip */
+
+        .consonant-Tooltip {
+            color: @consonantBaseColor;
+            background-color: @consonantGray700;
+
+            &:after {
+                background-color: @consonantGray700;
+            }
+        }
+
+        /* .consonant-BtnInfobit */
+
+        .consonant-BtnInfobit {
+            border-color: @consonantGray800;
+            background-color: @consonantBaseColor;
+
+            span {
+                color: @consonantGray800;
+            }
+
+            &:hover {
+                border-color: @consonantGray800;
+                background-color: @consonantGray800;
+            }
+
+            &:hover span {
+                color: @consonantBaseColor;
+            }
+
+            &:active {
+                border-color: @consonantGray900;
+                background-color: @consonantGray900;
+            }
+
+            &:active span {
+                color: @consonantBaseColor;
+            }
+
+            &:focus {
+                outline-color: @consonantBlue600;
+            }
+
+            &--cta {
+                border-color: @consonantBlue500;
+                background-color: @consonantBlue500;
+
+                span {
+                    color: @consonantBaseColor;
+                }
+
+                &:hover {
+                    border-color: @consonantBlue600;
+                    background-color: @consonantBlue600;
+                }
+
+                &:hover span {
+                    color: @consonantBaseColor;
+                }
+
+                &:active {
+                    border-color: @consonantBlue700;
+                    background-color: @consonantBlue700;
+                }
+
+                &:active span {
+                    color: @consonantBaseColor;
+                }
+            }
+        }
+
+        /* consonant-DateIntervalInfobit */
+
+        .consonant-DateIntervalInfobit {
+            color: @consonantGray700;
+        }
+
+        /* consonant-IconWithTextInfobit */
+
+        .consonant-IconWithTextInfobit {
+            &-text {
+                color: @consonantGray700;
+            }
+        }
+
+        /* consonant-LinkWithIcoInfobit */
+
+        .consonant-LinkWithIcoInfobit {
+            &:focus {
+                outline-color: @consonantBlue600;
+            }
+
+            span {
+                color: @consonantBlue500;
+            }
+
+            &:hover span {
+                color: @consonantBlue600;
+            }
+
+            &:active span {
+                color: @consonantBlue700;
+            }
+        }
+
+        /* consonant-LinkInfobit */
+
+        .consonant-LinkInfobit {
+            color: @consonantBlue500;
+
+            &:hover {
+                color: @consonantBlue600;
+            }
+
+            &:active {
+                color: @consonantBlue700;
+            }
+
+            &:focus {
+                outline-color: @consonantBlue600;
+            }
+        }
+
+        /* consonant-PriceInfobit */
+
+        .consonant-PriceInfobit {
+            &-price {
+                color: @consonantGray900;
+            }
+
+            &-term {
+                color: @consonantGray600;
+            }
+        }
+
+        /* consonant-ProgressInfobit */
+
+        .consonant-ProgressInfobit {
+            &-text {
+                color: @consonantGray700;
+            }
+
+            &-el {
+                background-color: @consonantBaseColor;
+                border-color: @consonantGray400;
+            }
+        }
+
+        /* consonant-RatingInfobit */
+
+        .consonant-RatingInfobit {
+            @empty-star: extract(@consonant-RatingInfobit-empty-stars, @index + 1);
+            @filled-star: extract(@consonant-RatingInfobit-filled-stars, @index + 1);
+
+            &-stars:before {
+                background-image: url(@empty-star);
+            }
+
+            &-stars:after {
+                background-image: url(@filled-star);
+            }
+
+            &-text {
+                color: @consonantGray600;
+            }
+        }
+
+        /* consonant-TextInfobit */
+
+        .consonant-TextInfobit {
+            color: @consonantGray700;
+        }
     }
 
     .buildThemes(@index + 1);
 }
 
-/* Add appropriate linear gradients based on the theme applied  */
+/* Theme-specific styles  */
 
 .consonant-u-themeDark .consonant-FullCard-inner,
 .consonant-u-themeDarkest .consonant-FullCard-inner {
@@ -383,9 +589,10 @@
         transparent
         linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.501) 36%,
-            rgba(255, 255, 255, 0.701) 100%
+            transparent 0%,
+            rgba(255, 255, 255, 0.5) 15%,
+            rgba(255, 255, 255, 0.8) 40%,
+            rgba(255, 255, 255, 1) 100%
         ) 0% 0% no-repeat padding-box;
 }
 
@@ -395,8 +602,9 @@
         transparent
         linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.1) 40%,
-            rgba(255, 255, 255, 0.5) 95%
+            rgba(255, 255, 255, 0.01) 35%,
+            rgba(255, 255, 255, 0.75) 60%,
+            rgba(255, 255, 255, 0.85) 100%
         ) 0 0% no-repeat;
 }
 
